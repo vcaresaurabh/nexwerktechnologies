@@ -9,17 +9,9 @@ import Logo from "@/components/ui/Logo";
 import { NAV_LINKS } from "@/constants/data";
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
-  // Close mobile menu on route change
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   const isActive = (href: string) =>
@@ -30,15 +22,11 @@ export default function Header() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100"
-          : "bg-slate-950/65 backdrop-blur-md border-b border-white/10"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-slate-950/65 backdrop-blur-md border-b border-white/10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[72px]">
-          <Logo dark={!scrolled} />
+          <Logo dark />
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
@@ -47,16 +35,12 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium transition-colors duration-200 relative group ${
-                  scrolled
-                    ? isActive(link.href) ? "text-blue-600" : "text-slate-600 hover:text-blue-600"
-                    : isActive(link.href) ? "text-blue-400" : "text-slate-200 hover:text-white"
+                  isActive(link.href) ? "text-blue-400" : "text-slate-200 hover:text-white"
                 }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-0.5 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                    scrolled ? "bg-blue-600" : "bg-blue-400"
-                  } ${
+                  className={`absolute -bottom-0.5 left-0 h-0.5 rounded-full bg-blue-400 transition-all duration-300 ${
                     isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 />
@@ -79,9 +63,7 @@ export default function Header() {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMobileOpen((prev) => !prev)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              scrolled ? "text-slate-700 hover:bg-slate-100" : "text-slate-200 hover:bg-white/10"
-            }`}
+            className="md:hidden p-2 rounded-lg text-slate-200 hover:bg-white/10 transition-colors"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
@@ -98,7 +80,7 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden bg-white border-t border-slate-100 shadow-lg"
+            className="md:hidden overflow-hidden bg-slate-950/95 backdrop-blur-md border-t border-white/10 shadow-lg"
           >
             <nav className="flex flex-col px-4 py-4 gap-1">
               {NAV_LINKS.map((link, i) => (
@@ -112,18 +94,18 @@ export default function Header() {
                     href={link.href}
                     className={`block px-3 py-2.5 text-sm font-medium rounded-lg transition-colors ${
                       isActive(link.href)
-                        ? "text-blue-600 bg-blue-50"
-                        : "text-slate-700 hover:text-blue-600 hover:bg-blue-50"
+                        ? "text-blue-400 bg-white/10"
+                        : "text-slate-200 hover:text-white hover:bg-white/10"
                     }`}
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
-              <div className="pt-3 border-t border-slate-100 mt-2">
+              <div className="pt-3 border-t border-white/10 mt-2">
                 <Link
                   href="/contact"
-                  className="flex w-full items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-2.5 rounded-full transition-colors"
+                  className="flex w-full items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm py-2.5 rounded-full transition-colors"
                 >
                   Get Free Consultation
                 </Link>
