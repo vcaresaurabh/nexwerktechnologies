@@ -17,8 +17,8 @@ export default function Logo({ className = "", dark = false }: LogoProps) {
       <Image
         src="/logo.png"
         alt="NexWerk Technologies"
-        width={1583}
-        height={435}
+        width={1455}
+        height={392}
         priority
         className={`h-9 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-105 ${
           dark ? "drop-shadow-[0_0_10px_rgba(59,130,246,0.35)]" : ""

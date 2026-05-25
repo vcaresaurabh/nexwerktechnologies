@@ -71,7 +71,7 @@ export default function Contact() {
               <div className="space-y-5">
                 {[
                   { icon: Mail, label: "Email", value: "contact@nexwerktechnologies.com", href: "mailto:contact@nexwerktechnologies.com" },
-                  { icon: Phone, label: "Phone", value: "888 909 9466", href: "tel:8889099466" },
+                  { icon: Phone, label: "Phone", value: "+91 79828 95936", href: "tel:+917982895936" },
                   { icon: MapPin, label: "Address", value: "F-115, Sector 12, New Vijay Nagar, Ghaziabad, U.P. 201009", href: null },
                   { icon: Clock, label: "Response Time", value: "1–2 Business Days", href: null },
                 ].map(({ icon: Icon, label, value, href }) => (

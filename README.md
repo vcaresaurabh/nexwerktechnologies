@@ -47,7 +47,7 @@ npm run build     # production build
 
 ### Phase 3 — Hero Background Animation + Contact Info
 - Replaced static blur blobs with 5 animated Framer Motion aurora orbs + animated dot-grid overlay
-- Updated phone: `888 909 9466` and address: `F-115, Sector 12, New Vijay Nagar, Ghaziabad, U.P. 201009` in Contact section and Footer
+- Updated phone: `+91 79828 95936` and address: `F-115, Sector 12, New Vijay Nagar, Ghaziabad, U.P. 201009` in Contact section and Footer
 
 ### Phase 4 — Hero Background Image
 - Added royalty-free data-center background image (Unsplash) to hero section
@@ -75,6 +75,6 @@ npm run build     # production build
 
 ## Contact
 
-- **Phone**: 888 909 9466
+- **Phone**: +91 79828 95936
 - **Email**: contact@nexwerktechnologies.com
 - **Address**: F-115, Sector 12, New Vijay Nagar, Ghaziabad, U.P. 201009
